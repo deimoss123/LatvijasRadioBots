@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "github:discordjs/opus",
-    "@discordjs/rest": "^0.1.0-canary.0",
     "@discordjs/voice": "^0.7.3",
     "discord.js": "^13.3.1",
     "dotenv": "^10.0.0",
