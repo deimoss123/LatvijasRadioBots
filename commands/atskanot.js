@@ -87,12 +87,10 @@ export default {
       return
     }
 
-    console.log(i.commandId, 'command id')
-
     const chosenRadio = i.options.getString('radio')
 
     await i.editReply(embedTemplate('Atskaņot',
-      `Tiek atskaņots ${chosenRadio} \n` +
+      `Tiek atskaņots **${chosenRadio}** \n` +
       `Balss kanāls - <#${channel.id}>`,
       radio[chosenRadio].img))
 
@@ -117,7 +115,14 @@ export default {
         if (!bot.voice.channel) return
 
         if (channel.members.size <= 1) {
-          if (bot.voice.channel) connection.destroy()
+          try {
+            if (bot.voice.channel) {
+              player.stop()
+              connection.destroy()
+            }
+          } catch (e) {
+            console.error(e)
+          }
           return
         }
         await checkIfAlone()
