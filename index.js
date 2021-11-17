@@ -11,7 +11,8 @@ const client = new Client({
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MEMBERS,
     Intents.FLAGS.GUILD_MESSAGES,
-    Intents.FLAGS.GUILD_VOICE_STATES
+    Intents.FLAGS.GUILD_VOICE_STATES,
+    Intents.FLAGS.GUILD_PRESENCES
   ],
 })
 
@@ -29,4 +30,10 @@ client.once('ready', async () => {
   await commandHandler(client, commands)
 })
 
-client.login(process.env.TOKEN)
+client.login(process.env.TOKEN).then(() => {
+  client.user.setActivity('/atskaņot', {type: 'LISTENING' })
+  client.user.setPresence({
+    game: { name: '/atskaņot'},
+    status: 'online'
+  })
+})
