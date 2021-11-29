@@ -115,8 +115,6 @@ export default {
       return
     }
 
-    console.log(i.commandId)
-
     const chosenRadio = i.options.getString('radio')
 
     const { img, url, color } = radio[chosenRadio]
