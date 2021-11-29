@@ -29,8 +29,9 @@ export default {
     }
 
     await i.editReply(embedTemplate(
-      'Apturēt',
-      'Radio atskaņošana apturēta',))
+      '',
+      'Radio atskaņošana apturēta\n' +
+      `Balss kanāls: <#${channel.id}>`,))
 
     await connections[guildId]?.destroy()
   }

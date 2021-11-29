@@ -6,6 +6,7 @@ export default async (client, botCommands) => {
 
   //commands.create(botCommands.atskanot.default.config)
   //commands.create(botCommands.apturet.default.config)
+
   //commands.edit('908527403607937074', botCommands.atskanot.default.config)
 
   client.on('interactionCreate', async i => {

@@ -1,10 +1,10 @@
-export const embedTemplate = (title, description, url = null) => {
+export const embedTemplate = (title, description, url = null, color = 0x000000) => {
   return {
     embeds: [{
       title,
       description,
       thumbnail: { url },
-      color: 0x9d2235,
+      color,
     }],
     allowedMentions: { 'users': [] }
   }
