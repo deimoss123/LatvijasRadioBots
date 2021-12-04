@@ -27,7 +27,7 @@ export default async (client, botCommands) => {
       await i.deferReply()
 
       console.log([
-        `${date.toLocaleTimeString()} `,
+        `${date.toLocaleTimeString('en-GB')} `,
         `${chalk.blueBright(`[${i.guild.name}]`)} `,
         `${chalk.bold(`${i.member.displayName}`)} `,
         `${chalk.gray(`(${i.member.id})`)}: `,
