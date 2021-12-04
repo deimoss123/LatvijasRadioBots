@@ -153,7 +153,7 @@ export default {
               const date = new Date()
 
               console.log([
-                `${date.toLocaleTimeString()} `,
+                `${date.toLocaleTimeString('en-GB')} `,
                 `${chalk.blueBright(`[${i.guild.name}]`)} `,
                 `${chalk.yellow(`Izgāja no balss kanāla (neaktivitāte)`)} - `,
                 `${bot.voice.channel.name}`,
