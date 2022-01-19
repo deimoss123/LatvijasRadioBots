@@ -15,23 +15,25 @@ export default {
     const botChannel = bot.voice.channel
 
     if (!botChannel) {
-      await i.editReply(embedTemplate(
-        'Apturēšanas kļūda',
-        'Pašlaik netiek atskaņots radio',))
+      await i.editReply(embedTemplate({
+        title: 'Apturēšanas kļūda',
+        description: 'Pašlaik netiek atskaņots radio'
+      }))
       return
     }
 
     if (channel?.id !== botChannel.id) {
-      await i.editReply(embedTemplate(
-        'Apturēšanas kļūda',
-        'Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu',))
+      await i.editReply(embedTemplate({
+        title: 'Apturēšanas kļūda',
+        description: 'Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu'
+      }))
       return
     }
 
-    await i.editReply(embedTemplate(
-      '',
-      'Radio atskaņošana apturēta\n' +
-      `Balss kanāls: <#${channel.id}>`,))
+    await i.editReply(embedTemplate({
+      description: 'Radio atskaņošana apturēta\n' +
+        `Balss kanāls: <#${channel.id}>`
+    }))
 
     await connections[guildId]?.destroy()
   }
