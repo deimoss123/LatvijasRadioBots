@@ -16,7 +16,6 @@ export default {
 
     if (!botChannel) {
       await i.editReply(embedTemplate({
-        title: 'Apturēšanas kļūda',
         description: 'Pašlaik netiek atskaņots radio'
       }))
       return
@@ -24,15 +23,13 @@ export default {
 
     if (channel?.id !== botChannel.id) {
       await i.editReply(embedTemplate({
-        title: 'Apturēšanas kļūda',
         description: 'Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu'
       }))
       return
     }
 
     await i.editReply(embedTemplate({
-      description: 'Radio atskaņošana apturēta\n' +
-        `Balss kanāls: <#${channel.id}>`
+      description: 'Radio atskaņošana apturēta'
     }))
 
     await connections[guildId]?.destroy()

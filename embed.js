@@ -12,7 +12,7 @@ export const embedTemplate = config => {
   return {
     embeds: [{
       title,
-      url: okddInv,
+      //url: okddInv,
       description,
       thumbnail: { url },
       color,
