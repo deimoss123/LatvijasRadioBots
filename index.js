@@ -1,5 +1,6 @@
 import { Intents, Client } from 'discord.js'
 import dotenv from 'dotenv'
+import cron from 'node-cron'
 
 import commandHandler from './commandHandler.js'
 import setBotPresence from './utils/setBotPresence.js';
@@ -26,4 +27,7 @@ client.on('interactionCreate', async i => {
 client.login(process.env.TOKEN).then(() => {
   console.log('Bot logged in')
   setBotPresence(client)
+  cron.schedule('0 0 * * *', () => {
+    setBotPresence(client)
+  })
 })
