@@ -5,7 +5,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "register": "node utils/registerGlobalCommands.js",
+    "register:guild": "node utils/registerGuildCommands.js"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +22,8 @@
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^4.4.0",
     "libsodium-wrappers": "^0.7.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }

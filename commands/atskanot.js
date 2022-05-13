@@ -2,13 +2,12 @@ import { Constants } from 'discord.js'
 import { radio } from '../radioInfo.js'
 
 import {
-  AudioPlayerStatus,
   createAudioPlayer,
   createAudioResource,
   joinVoiceChannel,
 } from '@discordjs/voice'
 
-import { embedTemplate } from '../embed.js'
+import embedTemplate from '../embedTemplate.js';
 import chalk from 'chalk'
 
 export let connections = {}

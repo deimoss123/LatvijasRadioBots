@@ -1,41 +1,24 @@
 import chalk from 'chalk'
+import atskanot from './commands/atskanot.js';
+import apturet from './commands/apturet.js';
 
-export default async (client, botCommands) => {
+export const commandList = [ atskanot, apturet ]
 
-  const { commands } = client.application
+export default async function commandHandler(i) {
+  const command = commandList.find(cmd => cmd.config.name === i.commandName)
+  if (!command) return
 
-  //commands.create(botCommands.atskanot.default.config)
-  //commands.create(botCommands.apturet.default.config)
+  await i.deferReply()
+  await command.run(i)
 
-  // dev
-  //commands.edit('908527403607937074', botCommands.atskanot.default.config)
+  const date = new Date()
 
-  // prod
-  //commands.edit('908746527890092042', botCommands.atskanot.default.config)
-
-  client.on('interactionCreate', async i => {
-    if (!i.isCommand()) return
-
-    const { commandName } = i
-
-    const cmdkey = Object.keys(botCommands).find(
-      cmd => botCommands[cmd].default.config.name === commandName)
-
-    const date = new Date()
-
-    if (cmdkey) {
-      await i.deferReply()
-
-      console.log([
-        `${date.toLocaleTimeString('en-GB')} `,
-        `${chalk.blueBright(`[${i.guild.name}]`)} `,
-        `${chalk.bold(`${i.member.displayName}`)} `,
-        `${chalk.gray(`(${i.member.id})`)}: `,
-        `${commandName} ${commandName === 'atskaņot' ? i.options.getString('radio') : ''}`
-      ].join(''))
-
-      await botCommands[cmdkey].default.run(i)
-    }
-  })
+  console.log([
+    `${date.toLocaleTimeString('en-GB')} `,
+    `${chalk.blueBright(`[${i.guild.name}]`)} `,
+    `${chalk.bold(`${i.member.displayName}`)} `,
+    `${chalk.gray(`(${i.member.id})`)}: `,
+    `${command.config.name} ${command.config.name === 'atskaņot' ? i.options.getString('radio') : ''}`
+  ].join(''))
 }
 

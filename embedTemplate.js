@@ -1,6 +1,4 @@
-const okddInv = 'https://discord.gg/8dssPHVR3Z'
-
-export const embedTemplate = config => {
+export default function embedTemplate(config) {
   const {
     title = '',
     description,
@@ -12,7 +10,6 @@ export const embedTemplate = config => {
   return {
     embeds: [{
       title,
-      //url: okddInv,
       description,
       thumbnail: { url },
       color,

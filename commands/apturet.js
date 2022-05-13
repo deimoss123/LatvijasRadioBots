@@ -1,4 +1,4 @@
-import { embedTemplate } from '../embed.js'
+import embedTemplate from '../embedTemplate.js';
 import { connections } from './atskanot.js'
 
 export default {
