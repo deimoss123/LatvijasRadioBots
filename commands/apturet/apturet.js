@@ -1,13 +1,11 @@
-import embedTemplate from '../embedTemplate.js';
-import { connections } from './atskanot.js'
+import embedTemplate from '../../embedTemplate.js';
+import { connections } from '../atskanot/atskanot.js'
+import apturetConfig from './apturetConfig.js';
+import logCommand from '../../utils/logCommand.js';
 
-export default {
-  config: {
-    name: 'apturēt',
-    description: 'Apturēt radio atskaņošanu'
-  },
-
-  run: async i => {
+const apturet = {
+  config: apturetConfig,
+  async run(i) {
     const { guildId } = i
     const { channel } = i.member.voice
 
@@ -33,5 +31,9 @@ export default {
     }))
 
     await connections[guildId]?.destroy()
+
+    logCommand(i)
   }
 }
+
+export default apturet
