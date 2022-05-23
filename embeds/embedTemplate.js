@@ -15,6 +15,5 @@ export default function embedTemplate(config) {
       color,
       fields
     }],
-    allowedMentions: { 'users': [] }
   }
 }

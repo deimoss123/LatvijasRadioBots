@@ -1,7 +1,7 @@
-import embedTemplate from '../../embedTemplate.js';
-import { connections } from '../atskanot/atskanot.js'
+import embedTemplate from '../../embeds/embedTemplate.js';
 import apturetConfig from './apturetConfig.js';
-import logCommand from '../../utils/logCommand.js';
+import { getVoiceConnection } from '@discordjs/voice';
+import ephemeralReply from '../../embeds/ephemeralReply.js';
 
 const apturet = {
   config: apturetConfig,
@@ -12,27 +12,25 @@ const apturet = {
     const bot = await i.guild.members.cache.get(process.env.BOTID)
     const botChannel = bot.voice.channel
 
-    if (!botChannel) {
-      await i.editReply(embedTemplate({
-        description: 'Pašlaik netiek atskaņots radio'
-      }))
+    const connection = getVoiceConnection(guildId)
+
+    if (!botChannel || !connection) {
+      await i.reply(ephemeralReply('Pašlaik netiek atskaņots radio'))
       return
     }
 
     if (channel?.id !== botChannel.id) {
-      await i.editReply(embedTemplate({
-        description: 'Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu'
-      }))
+      await i.reply(ephemeralReply('Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu'))
       return
     }
 
-    await i.editReply(embedTemplate({
+    await i.reply(embedTemplate({
       description: 'Radio atskaņošana apturēta'
     }))
 
-    await connections[guildId]?.destroy()
-
-    logCommand(i)
+    try {
+      connection.destroy()
+    } catch (e) {}
   }
 }
 

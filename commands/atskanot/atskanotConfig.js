@@ -1,4 +1,3 @@
-
 const atskanotConfig = {
   name: 'atskaņot',
   description: 'Atskaņot radio balss kanālā',

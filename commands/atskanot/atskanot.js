@@ -1,54 +1,44 @@
-import radioInfo from '../../radioInfo.js'
+import radioInfo from '../radioInfo.js'
 import {
   createAudioPlayer,
-  createAudioResource,
-  joinVoiceChannel,
-} from '@discordjs/voice'
-import embedTemplate from '../../embedTemplate.js';
-import chalk from 'chalk'
+  createAudioResource, entersState, getVoiceConnection,
+  joinVoiceChannel, VoiceConnectionStatus,
+} from '@discordjs/voice';
 import atskanotConfig from './atskanotConfig.js';
 import logCommand from '../../utils/logCommand.js';
-
-export let connections = {}
+import atskanotEmbed from './atskanotEmbed.js';
+import logDisconnect from '../../utils/logDisconnect.js';
+import ephemeralReply from '../../embeds/ephemeralReply.js';
 
 const atskanot = {
   config: atskanotConfig,
   async run(i) {
-    const { guildId } = i
-    const { channel } = i.member.voice
+    const { channel } = i.member?.voice
 
     if (!channel) {
-      await i.editReply(embedTemplate({
-        description: 'Pievienojies balss kanālam lai atskaņotu radio'
-      }))
+      await i.reply(ephemeralReply('Pievienojies balss kanālam lai atskaņotu radio'))
       return
     }
+
+    const bot = await i.guild.members.cache.get(process.env.BOTID)
+
+    if (!channel.permissionsFor(bot).has('CONNECT')) {
+      await i.reply(ephemeralReply('Botam nav atļauts pievienoties šim balss kanālam'))
+      return
+    }
+
+    const currentConnection = getVoiceConnection(i.guildId)
+    currentConnection?.destroy?.()
 
     logCommand(i)
 
     const chosenRadio = i.options.getString('radio')
-
     const { img, url, color } = radioInfo[chosenRadio]
 
     let memberCount = channel.members.size
-    const bot = await i.guild.members.cache.get(process.env.BOTID)
-    if (bot.voice.channel) memberCount--
+    if (bot.voice.channel && bot.voice.channelId === i.members?.voice.channelId) memberCount--
 
-    await i.editReply(embedTemplate({
-      title: 'Radio atskaņošana',
-      description: `Tiek atskaņots **${chosenRadio}** \n`,
-      fields: [{
-        name: 'Balss kanāls: ',
-        value: `<#${channel.id}>`,
-        inline: true
-      }, {
-        name: 'Klausītāju skaits:',
-        value: `${memberCount}`,
-        inline: true
-      }],
-      url: img,
-      color
-    }))
+    await i.reply(atskanotEmbed(chosenRadio, channel, memberCount, img, color))
 
     const connection = joinVoiceChannel({
       channelId: channel.id,
@@ -56,49 +46,44 @@ const atskanot = {
       adapterCreator: channel.guild.voiceAdapterCreator,
     })
 
-    connections[guildId] = connection
-
     const resource = createAudioResource(url)
     const player = createAudioPlayer()
 
     player.play(resource)
     connection.subscribe(player)
 
-    // viss šitais kods ir šizofrēnija
-    const checkIfAlone = async () => {
-      await setTimeout(async () => {
-        const bot = await i.guild.members.cache.get(process.env.BOTID)
+    // ja bots zaudē savienojumu tad mēģinās atsākt atskaņošanu
+    connection.on('disconnected', async () => {
+      try {
+        await Promise.race([
+          entersState(connection, VoiceConnectionStatus.Signalling, 5_000),
+          entersState(connection, VoiceConnectionStatus.Connecting, 5_000)
+        ])
+      } catch (e) {
+        try {
+          connection.destroy()
+        } catch (e) {}
+      }
+    })
 
-        if (!bot.voice.channel) return
+    connection.on('destroyed', () => logDisconnect(i))
 
-        if (channel.members.size <= 1) {
-
-          setTimeout(() => {
-            if (bot.voice.channel) {
-
-              console.log([
-                new Date().toLocaleString(),
-                chalk.blueBright(`[${i.guild.name}]`),
-                chalk.yellow(`Izgāja no balss kanāla (neaktivitāte)`),
-                bot.voice.channel.name,
-              ].join(' '))
-
-              try {
-                player.stop()
-                connection.destroy()
-              } catch (e) {
-                console.error(e)
-              }
-            }
-          }, 10000)
-
-          return
-        }
-        await checkIfAlone()
-      }, 10000)
+    // ik 15 sekundes pārbauda vai bots ir viens pats balss kanālā vai arī bots ir atvienots
+    let isAlone = false
+    while (!isAlone) {
+      connection.setSpeaking(true)
+      isAlone = await new Promise(res => {
+        setTimeout(async () => {
+          const bot = await i.guild.members.cache.get(process.env.BOTID)
+          if (!bot?.voice?.channel || bot.voice.channel.members.size <= 1) res(true)
+          res(false)
+        }, 15000)
+      })
     }
 
-    await checkIfAlone()
+    try {
+      connection.destroy()
+    } catch (e) {}
   },
 }
 

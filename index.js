@@ -1,7 +1,7 @@
 import { Intents, Client } from 'discord.js'
 import dotenv from 'dotenv'
 import cron from 'node-cron'
-import commandHandler from './commandHandler.js'
+import commandHandler from './commands/commandHandler.js'
 import setBotPresence from './utils/setBotPresence.js';
 
 dotenv.config()

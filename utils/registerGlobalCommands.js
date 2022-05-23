@@ -1,4 +1,4 @@
-import { commandList } from '../commandHandler.js';
+import { commandList } from '../commands/commandHandler.js';
 import dotenv from 'dotenv';
 import validateEnv from './validateEnv.js';
 import { Client, Intents } from 'discord.js';
