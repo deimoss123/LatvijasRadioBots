@@ -7,7 +7,7 @@ export default function logCommand(i) {
       chalk.blueBright(`[${i.guild.name}]`),
       chalk.bold(`${i.member.displayName}`),
       chalk.gray(`(${i.member.id})`),
-      i.toString().substring(1)
-    ].join(' ')
-  )
+      i.toString().substring(1),
+    ].join(' '),
+  );
 }

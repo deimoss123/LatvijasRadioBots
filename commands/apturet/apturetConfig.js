@@ -1,6 +1,6 @@
 const apturetConfig = {
   name: 'apturēt',
-  description: 'Apturēt radio atskaņošanu'
-}
+  description: 'Apturēt radio atskaņošanu',
+};
 
-export default apturetConfig
+export default apturetConfig;

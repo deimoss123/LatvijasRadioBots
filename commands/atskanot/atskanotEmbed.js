@@ -5,7 +5,7 @@ export default function atskanotEmbed(
   channel,
   memberCount,
   img,
-  color
+  color,
 ) {
   return embedTemplate(
     {
@@ -16,15 +16,15 @@ export default function atskanotEmbed(
         {
           name: 'Balss kanāls: ',
           value: `<#${channel.id}>`,
-          inline: true
+          inline: true,
         }, {
           name: 'Klausītāju skaits:',
           value: `${memberCount || 0}`,
-          inline: true
-        }
+          inline: true,
+        },
       ],
       url: img,
-      color
-    }
-  )
+      color,
+    },
+  );
 }

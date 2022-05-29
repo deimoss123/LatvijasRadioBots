@@ -25,10 +25,10 @@ const atskanotConfig = {
           value: 'Latvijas Radio 5',
         }, {
           name: 'Radio SWH',
-          value: 'Radio SWH'
+          value: 'Radio SWH',
         }, {
           name: 'Radio Skonto',
-          value: 'Radio Skonto'
+          value: 'Radio Skonto',
         }, {
           name: 'Latgolys Radeja',
           value: 'Latgolys Radeja',
@@ -39,6 +39,6 @@ const atskanotConfig = {
       ].map(({ name, value }) => ({ name: '🎧 ' + name, value })),
     },
   ],
-}
+};
 
-export default atskanotConfig
+export default atskanotConfig;
