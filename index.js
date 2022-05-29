@@ -4,7 +4,6 @@ import cron from 'node-cron';
 import commandHandler from './commands/commandHandler.js';
 import setBotPresence from './utils/setBotPresence.js';
 
-process.env.TZ = 'Europe/Riga';
 dotenv.config();
 
 const client = new Client({
