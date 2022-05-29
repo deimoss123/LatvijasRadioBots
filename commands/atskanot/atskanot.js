@@ -35,7 +35,7 @@ const atskanot = {
     const { img, url, color } = radioInfo[chosenRadio];
 
     let memberCount = channel.members.size;
-    if (bot.voice.channel && bot.voice.channelId === i.members?.voice.channelId) memberCount--;
+    if (bot.voice.channel && bot.voice.channelId === channel.id) memberCount--;
 
     await i.reply(atskanotEmbed(chosenRadio, channel, memberCount, img, color));
 
