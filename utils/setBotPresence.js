@@ -1,7 +1,6 @@
 export default function setBotPresence(client) {
-  client.user.setActivity('/atskaņot', { type: 'LISTENING' });
-  client.user.setPresence({
-    game: { name: '/atskaņot' },
-    status: 'dnd',
-  });
+  const guildCount = client.guilds.cache.size;
+
+  client.user.setActivity(`/atskaņot | ${guildCount} serveros`, { type: 'PLAYING' });
+  client.user.setPresence({ status: 'online' });
 }
