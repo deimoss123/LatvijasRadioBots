@@ -1,7 +1,7 @@
-import embedTemplate from '../../embeds/embedTemplate.js';
 import apturetConfig from './apturetConfig.js';
 import { getVoiceConnection } from '@discordjs/voice';
-import ephemeralReply from '../../embeds/ephemeralReply.js';
+import ephemeralReplyEmbed from '../../utils/ephemeralReplyEmbed.js';
+import apturetEmbed from './apturetEmbed.js';
 
 const apturet = {
   config: apturetConfig,
@@ -15,16 +15,14 @@ const apturet = {
     const connection = getVoiceConnection(guildId);
 
     if (!botChannel || !connection) {
-      return i.reply(ephemeralReply('Pašlaik netiek atskaņots radio'));
+      return i.reply(ephemeralReplyEmbed('Pašlaik netiek atskaņots radio'));
     }
 
     if (channel?.id !== botChannel.id) {
-      return i.reply(ephemeralReply('Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu'));
+      return i.reply(ephemeralReplyEmbed('Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu'));
     }
 
-    await i.reply(embedTemplate({
-      description: 'Radio atskaņošana apturēta',
-    }));
+    await i.reply(apturetEmbed());
 
     try {
       connection.destroy();

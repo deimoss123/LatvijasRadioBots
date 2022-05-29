@@ -11,19 +11,19 @@ import atskanotConfig from './atskanotConfig.js';
 import logCommand from '../../utils/logCommand.js';
 import atskanotEmbed from './atskanotEmbed.js';
 import logDisconnect from '../../utils/logDisconnect.js';
-import ephemeralReply from '../../embeds/ephemeralReply.js';
+import ephemeralReplyEmbed from '../../utils/ephemeralReplyEmbed.js';
 
 const atskanot = {
   config: atskanotConfig,
   async run(i) {
     const { channel } = i.member?.voice;
 
-    if (!channel) return i.reply(ephemeralReply('Pievienojies balss kanālam lai atskaņotu radio'));
+    if (!channel) return i.reply(ephemeralReplyEmbed('Pievienojies balss kanālam lai atskaņotu radio'));
 
     const bot = await i.guild.members.cache.get(process.env.BOTID);
 
     if (!channel.permissionsFor(bot).has('CONNECT')) {
-      return i.reply(ephemeralReply('Botam nav atļauts pievienoties šim balss kanālam'));
+      return i.reply(ephemeralReplyEmbed('Botam nav atļauts pievienoties šim balss kanālam'));
     }
 
     const currentConnection = getVoiceConnection(i.guildId);

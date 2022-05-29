@@ -1,30 +1,21 @@
-import embedTemplate from '../../embeds/embedTemplate.js';
+import { MessageEmbed } from 'discord.js';
 
 export default function atskanotEmbed(
   chosenRadio,
   channel,
   memberCount,
-  img,
+  imgUrl,
   color,
 ) {
-  return embedTemplate(
-    {
-      content: Math.random().toString(),
-      title: 'Radio atskaņošana',
-      description: `Tiek atskaņots **${chosenRadio}** \n`,
-      fields: [
-        {
-          name: 'Balss kanāls: ',
-          value: `<#${channel.id}>`,
-          inline: true,
-        }, {
-          name: 'Klausītāju skaits:',
-          value: `${memberCount || 0}`,
-          inline: true,
-        },
-      ],
-      url: img,
-      color,
-    },
-  );
+  return {
+    embeds: [
+      new MessageEmbed()
+        .setTitle('Radio atskaņošana')
+        .setDescription(`Tiek atskaņots **${chosenRadio}**`)
+        .addField('Balss kanāls', `<#${channel.id}>`, true)
+        .addField('Klausītāju skaits', `${memberCount || 0}`, true)
+        .setThumbnail(imgUrl)
+        .setColor(color),
+    ],
+  };
 }
