@@ -1,8 +1,7 @@
 import radioInfo from '../radioInfo.js'
 import {
-  createAudioPlayer,
-  createAudioResource, entersState, getVoiceConnection,
-  joinVoiceChannel, VoiceConnectionStatus,
+  createAudioPlayer, createAudioResource, entersState,
+  getVoiceConnection, joinVoiceChannel, VoiceConnectionStatus,
 } from '@discordjs/voice';
 import atskanotConfig from './atskanotConfig.js';
 import logCommand from '../../utils/logCommand.js';
@@ -71,13 +70,16 @@ const atskanot = {
     // ik 15 sekundes pārbauda vai bots ir viens pats balss kanālā vai arī bots ir atvienots
     let isAlone = false
     while (!isAlone) {
+      if (connection.state.status === VoiceConnectionStatus.Destroyed) return
+
       connection.setSpeaking(true)
+
       isAlone = await new Promise(res => {
         setTimeout(async () => {
           const bot = await i.guild.members.cache.get(process.env.BOTID)
           if (!bot?.voice?.channel || bot.voice.channel.members.size <= 1) res(true)
           res(false)
-        }, 15000)
+        }, 5000)
       })
     }
 
