@@ -1,4 +1,4 @@
-import radioInfo from '../radioInfo.js';
+import radioInfo from '../../radioInfo.js';
 import {
   createAudioPlayer,
   createAudioResource,
