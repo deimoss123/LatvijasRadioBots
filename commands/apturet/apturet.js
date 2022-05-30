@@ -9,7 +9,7 @@ const apturet = {
     const { guildId } = i;
     const { channel } = i.member.voice;
 
-    const bot = await i.guild.members.cache.get(process.env.BOTID);
+    const bot = await i.guild.members.cache.get(process.env.BOT_ID);
     const botChannel = bot.voice.channel;
 
     const connection = getVoiceConnection(guildId);

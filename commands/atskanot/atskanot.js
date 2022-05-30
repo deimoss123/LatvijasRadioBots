@@ -76,7 +76,7 @@ const atskanot = {
 
       isAlone = await new Promise(res => {
         setTimeout(async () => {
-          const bot = await i.guild.members.cache.get(process.env.BOTID);
+          const bot = await i.guild.members.cache.get(process.env.BOT_ID);
           if (!bot?.voice?.channel || bot.voice.channel.members.size <= 1) res(true);
           res(false);
         }, 60000);
