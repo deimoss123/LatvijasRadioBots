@@ -12,6 +12,7 @@ if (!validateEnv()) process.exit(1);
 const client = new Client({
   intents: [
     Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_MEMBERS,
     Intents.FLAGS.GUILD_VOICE_STATES,
   ],
 });
