@@ -1,6 +1,6 @@
 import { MessageEmbed } from 'discord.js';
 
-export default function ephemeralReplyEmbed(description) {
+export default function ephemeralEmbed(description) {
   return {
     embeds: [
       new MessageEmbed()
