@@ -20,7 +20,7 @@ const atskanot = {
 
     if (!channel) return i.reply(ephemeralEmbed('Pievienojies balss kanālam lai atskaņotu radio'));
 
-    const bot = await i.guild.members.cache.get(process.env.BOTID);
+    const bot = await i.guild.members.cache.get(process.env.BOT_ID);
 
     if (!channel.permissionsFor(bot).has('CONNECT')) {
       return i.reply(ephemeralEmbed('Botam nav atļauts pievienoties šim balss kanālam'));
