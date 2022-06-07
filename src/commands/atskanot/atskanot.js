@@ -65,7 +65,10 @@ const atskanot = {
       }
     });
 
-    connection.on('destroyed', () => logDisconnect(i));
+    connection.once('destroyed', () => {
+      player.stop()
+      logDisconnect(i)
+    });
 
     // ik 60 sekundes pārbauda vai bots ir viens pats balss kanālā vai arī bots ir atvienots
     let isAlone = false;
