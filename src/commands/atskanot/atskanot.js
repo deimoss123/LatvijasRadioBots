@@ -52,18 +52,18 @@ const atskanot = {
     connection.subscribe(player);
 
     // ja bots zaudē savienojumu tad mēģinās atsākt atskaņošanu
-    connection.on('disconnected', async () => {
-      try {
-        await Promise.race([
-          entersState(connection, VoiceConnectionStatus.Signalling, 5_000),
-          entersState(connection, VoiceConnectionStatus.Connecting, 5_000),
-        ]);
-      } catch (e) {
-        try {
-          connection.destroy();
-        } catch (e) {}
-      }
-    });
+    // connection.on('disconnected', async () => {
+    //   try {
+    //     await Promise.race([
+    //       entersState(connection, VoiceConnectionStatus.Signalling, 5_000),
+    //       entersState(connection, VoiceConnectionStatus.Connecting, 5_000),
+    //     ]);
+    //   } catch (e) {
+    //     try {
+    //       connection.destroy();
+    //     } catch (e) {}
+    //   }
+    // });
 
     connection.once('destroyed', () => {
       player.stop()
