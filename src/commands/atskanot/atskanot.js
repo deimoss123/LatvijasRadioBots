@@ -55,6 +55,25 @@ const atskanot = {
         adapterCreator: channel.guild.voiceAdapterCreator,
       });
       
+      // ja bots zaudē savienojumu tad mēģinās atsākt atskaņošanu
+      connection.on('disconnected', async () => {
+        try {
+          await Promise.race([
+            entersState(connection, VoiceConnectionStatus.Signalling, 5_000),
+            entersState(connection, VoiceConnectionStatus.Connecting, 5_000),
+          ]);
+        } catch (e) {
+          try {
+            connection.destroy();
+          } catch (e) {}
+        }
+      });
+      
+      connection.once('destroyed', () => {
+        connection.removeAllListeners();
+        logDisconnect(i);
+      });
+      
       // neliela šizofrēnija
       connection.player = createAudioPlayer({ behaviors: { noSubscriber: NoSubscriberBehavior.Stop } });
     }
@@ -63,26 +82,6 @@ const atskanot = {
     connection.player.play(createAudioResource(url));
     connection.subscribe(connection.player);
     connection.setSpeaking(true);
-    
-    // ja bots zaudē savienojumu tad mēģinās atsākt atskaņošanu
-    connection.on('disconnected', async () => {
-      try {
-        await Promise.race([
-          entersState(connection, VoiceConnectionStatus.Signalling, 5_000),
-          entersState(connection, VoiceConnectionStatus.Connecting, 5_000),
-        ]);
-      } catch (e) {
-        try {
-          connection.destroy();
-        } catch (e) {}
-      }
-    });
-    
-    connection.once('destroyed', () => {
-      // console.log(player.state)
-      connection.removeAllListeners();
-      logDisconnect(i);
-    });
     
     if (currentConnection) return;
     

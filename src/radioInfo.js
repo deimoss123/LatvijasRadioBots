@@ -46,7 +46,7 @@ const radioInfo = {
   },
   'Kurzemes Radio': {
     img: 'https://i.postimg.cc/k4y2X9Hp/kurzemes.png',
-    url: 'https://onlineradiobox.com/json/lv/kurzemes/play?platform=web',
+    url: 'http://31.170.16.6:8000/;?type=http&nocache=457',
     color: '#771464',
   },
 };
