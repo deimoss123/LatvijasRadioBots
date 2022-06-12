@@ -13,7 +13,7 @@ const apturet = {
     const botChannel = bot.voice.channel;
 
     const connection = getVoiceConnection(guildId);
-
+    
     if (!botChannel || !connection) {
       return i.reply(ephemeralEmbed('Pašlaik netiek atskaņots radio'));
     }

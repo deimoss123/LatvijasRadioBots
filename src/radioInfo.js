@@ -44,6 +44,11 @@ const radioInfo = {
     url: 'http://91.228.7.124:7007/;?type=http&nocache=905',
     color: '#643c78',
   },
+  'Kurzemes Radio': {
+    img: 'https://i.postimg.cc/k4y2X9Hp/kurzemes.png',
+    url: 'https://onlineradiobox.com/json/lv/kurzemes/play?platform=web',
+    color: '#771464',
+  },
 };
 
 export default radioInfo;
