@@ -5,7 +5,6 @@ import {
   entersState,
   getVoiceConnection,
   joinVoiceChannel,
-  NoSubscriberBehavior,
   VoiceConnectionStatus,
 } from '@discordjs/voice';
 import atskanotConfig from './atskanotConfig.js';
@@ -70,22 +69,24 @@ const atskanot = {
       });
       
       connection.once('destroyed', () => {
+        connection.player.stop(true);
         connection.removeAllListeners();
         logDisconnect(i);
       });
       
       // neliela šizofrēnija
-      connection.player = createAudioPlayer({ behaviors: { noSubscriber: NoSubscriberBehavior.Stop } });
+      connection.player = createAudioPlayer();
     }
     
-    connection.player.radioUrl = chosenRadio;
     connection.player.play(createAudioResource(url));
+    connection.player.radioUrl = chosenRadio;
+    
     connection.subscribe(connection.player);
     connection.setSpeaking(true);
     
     if (currentConnection) return;
     
-    // ik 60 sekundes pārbauda vai bots ir viens pats balss kanālā vai arī bots ir atvienots
+    // ik 5 sekundes pārbauda vai bots ir viens pats balss kanālā vai arī bots ir atvienots
     let isAlone = false;
     while (!isAlone) {
       if (connection.state.status === VoiceConnectionStatus.Destroyed) return;
