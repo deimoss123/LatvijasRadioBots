@@ -18,8 +18,8 @@ client.once('ready', (bot) => {
 
   setBotPresence(bot);
 
-  // katru dienu plkst 00:00
-  cron.schedule('0 0 * * *', () => setBotPresence(bot), {});
+  // katru stundu
+  cron.schedule('0 * * * *', () => setBotPresence(bot), {});
 });
 
 client.on('interactionCreate', async (i) => {
