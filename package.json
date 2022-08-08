@@ -24,6 +24,10 @@
     "libsodium-wrappers": "^0.7.9",
     "node-cron": "^3.0.0"
   },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 100
+  },
   "devDependencies": {
     "nodemon": "^2.0.16"
   }

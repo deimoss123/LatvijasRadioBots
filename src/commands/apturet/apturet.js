@@ -9,17 +9,19 @@ const apturet = {
     const { guildId } = i;
     const { channel } = i.member.voice;
 
-    const bot = await i.guild.members.cache.get(process.env.BOT_ID);
+    const bot = i.guild.me;
     const botChannel = bot.voice.channel;
 
     const connection = getVoiceConnection(guildId);
-    
+
     if (!botChannel || !connection) {
       return i.reply(ephemeralEmbed('Pašlaik netiek atskaņots radio'));
     }
 
     if (channel?.id !== botChannel.id) {
-      return i.reply(ephemeralEmbed('Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu'));
+      return i.reply(
+        ephemeralEmbed('Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu')
+      );
     }
 
     await i.reply(apturetEmbed());

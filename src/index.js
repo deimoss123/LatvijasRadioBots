@@ -10,14 +10,10 @@ dotenv.config();
 if (!validateEnv()) process.exit(1);
 
 const client = new Client({
-  intents: [
-    Intents.FLAGS.GUILDS,
-    Intents.FLAGS.GUILD_MEMBERS,
-    Intents.FLAGS.GUILD_VOICE_STATES,
-  ],
+  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_VOICE_STATES],
 });
 
-client.once('ready', bot => {
+client.once('ready', (bot) => {
   console.log(`${chalk.yellow(bot.user.tag)} logged in`);
 
   setBotPresence(bot);
@@ -26,7 +22,7 @@ client.once('ready', bot => {
   cron.schedule('0 0 * * *', () => setBotPresence(bot), {});
 });
 
-client.on('interactionCreate', async i => {
+client.on('interactionCreate', async (i) => {
   if (i.isCommand()) await commandHandler(i);
 });
 
