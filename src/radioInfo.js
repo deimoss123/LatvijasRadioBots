@@ -49,6 +49,16 @@ const radioInfo = {
     url: 'http://31.170.16.6:8000/;?type=http&nocache=457',
     color: '#771464',
   },
+  'European Hit Radio': {
+    img: 'https://i.postimg.cc/HxYnzhfm/ehr.png',
+    url: 'https://stream2.superfm.lv:8000/ehr.aac',
+    color: '#ed1c24',
+  },
+  'Star FM': {
+    img: 'https://i.postimg.cc/XJJd2qCQ/starfm.png',
+    url: 'http://starfm.live.advailo.com/audio/mp3/icecast.audio',
+    color: '#ffffff',
+  },
 };
 
 export default radioInfo;
