@@ -1,12 +1,6 @@
 import { MessageEmbed } from 'discord.js';
 
-export default function atskanotEmbed(
-  chosenRadio,
-  channel,
-  memberCount,
-  imgUrl,
-  color,
-) {
+export default function atskanotEmbed(chosenRadio, channel, memberCount, imgUrl, color) {
   return {
     embeds: [
       new MessageEmbed()

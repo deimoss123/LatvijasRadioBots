@@ -21,7 +21,7 @@ const apturet = {
     if (channel?.id !== botChannel.id) {
       return i
         .reply(ephemeralEmbed('Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu'))
-        .catch((_) => _);
+        .catch(_ => _);
     }
 
     try {

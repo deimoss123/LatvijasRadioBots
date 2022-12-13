@@ -6,6 +6,6 @@ export default function logDisconnect(i) {
       new Date().toLocaleString('en-GB'),
       chalk.blueBright(`[${i.guild.name}]`),
       chalk.yellow('Atskaņošana pārtraukta'),
-    ].join(' '),
+    ].join(' ')
   );
 }

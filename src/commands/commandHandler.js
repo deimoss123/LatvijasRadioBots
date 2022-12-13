@@ -6,11 +6,9 @@ export const commandList = [atskanot, apturet];
 
 export default function commandHandler(i) {
   if (!i.inGuild()) {
-    return i
-      .reply(ephemeralEmbed('Latvija Radio botu var izmantot tikai serveros'))
-      .catch((_) => _);
+    return i.reply(ephemeralEmbed('Latvija Radio botu var izmantot tikai serveros')).catch(_ => _);
   }
 
-  const command = commandList.find((cmd) => cmd.config.name === i.commandName);
+  const command = commandList.find(cmd => cmd.config.name === i.commandName);
   if (command) command.run(i);
 }

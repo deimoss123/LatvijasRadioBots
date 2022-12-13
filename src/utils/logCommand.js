@@ -8,6 +8,6 @@ export default function logCommand(i) {
       chalk.bold(`${i.member.displayName}`),
       chalk.gray(`(${i.member.id})`),
       i.toString().substring(1),
-    ].join(' '),
+    ].join(' ')
   );
 }
