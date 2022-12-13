@@ -22,7 +22,7 @@ client.once('ready', (bot) => {
 });
 
 client.on('interactionCreate', async (i) => {
-  if (i.isChatInputCommand()) await commandHandler(i);
+  if (i.isCommand()) await commandHandler(i);
 });
 
 client.login(process.env.TOKEN);
