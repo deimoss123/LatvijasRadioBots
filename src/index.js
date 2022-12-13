@@ -1,6 +1,5 @@
 import { Client, Intents } from 'discord.js';
 import dotenv from 'dotenv';
-import cron from 'node-cron';
 import commandHandler from './commands/commandHandler.js';
 import setBotPresence from './utils/setBotPresence.js';
 import chalk from 'chalk';
@@ -19,11 +18,11 @@ client.once('ready', (bot) => {
   setBotPresence(bot);
 
   // katru stundu
-  cron.schedule('0 * * * *', () => setBotPresence(bot), {});
+  setInterval(() => setBotPresence(bot), 3_600_000);
 });
 
 client.on('interactionCreate', async (i) => {
-  if (i.isCommand()) await commandHandler(i);
+  if (i.isChatInputCommand()) await commandHandler(i);
 });
 
 client.login(process.env.TOKEN);
