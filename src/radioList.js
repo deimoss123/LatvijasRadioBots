@@ -1,4 +1,4 @@
-const radioInfo = {
+const radioList = {
   'Latvijas Radio 1': {
     img: 'https://www.ulmanbots.lv/images/radio/lr1.png',
     url: 'https://60766ff53d5e6.streamlock.net/liveALR1/mp4:LR1/playlist.m3u8',
@@ -61,4 +61,4 @@ const radioInfo = {
   },
 };
 
-export default radioInfo;
+export default radioList;

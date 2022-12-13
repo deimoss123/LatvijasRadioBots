@@ -1,4 +1,4 @@
-import radioInfo from '../../radioInfo.js';
+import radioInfo from '../../radioList.js';
 
 const atskanotConfig = {
   name: 'atskaņot',
