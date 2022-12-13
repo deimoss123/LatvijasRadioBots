@@ -19,14 +19,13 @@ const apturet = {
     }
 
     if (channel?.id !== botChannel.id) {
-      return i.reply(
-        ephemeralEmbed('Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu')
-      );
+      return i
+        .reply(ephemeralEmbed('Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu'))
+        .catch((_) => _);
     }
 
-    await i.reply(apturetEmbed());
-
     try {
+      await i.reply(apturetEmbed());
       connection.destroy();
     } catch (e) {}
   },

@@ -18,12 +18,18 @@ const atskanot = {
   async run(i) {
     const { channel } = i.member?.voice;
 
-    if (!channel) return i.reply(ephemeralEmbed('Pievienojies balss kanālam lai atskaņotu radio'));
+    if (!channel) {
+      return i
+        .reply(ephemeralEmbed('Pievienojies balss kanālam lai atskaņotu radio'))
+        .catch((_) => _);
+    }
 
     const bot = i.guild.me;
 
     if (!channel.permissionsFor(bot).has('CONNECT')) {
-      return i.reply(ephemeralEmbed('Botam nav atļauts pievienoties šim balss kanālam'));
+      return i
+        .reply(ephemeralEmbed('Botam nav atļauts pievienoties šim balss kanālam'))
+        .catch((_) => _);
     }
 
     const chosenRadio = i.options.getString('radio');
@@ -38,13 +44,15 @@ const atskanot = {
     let connection = currentConnection;
 
     if (connection?.player?.radioUrl === chosenRadio) {
-      return i.reply(ephemeralEmbed(`Balss kanālā jau tiek atskaņots **${chosenRadio}**`));
+      return i
+        .reply(ephemeralEmbed(`Balss kanālā jau tiek atskaņots **${chosenRadio}**`))
+        .catch((_) => _);
     }
 
     let memberCount = channel.members.size;
     if (bot.voice.channel && bot.voice.channelId === channel.id) memberCount--;
 
-    await i.reply(atskanotEmbed(chosenRadio, channel, memberCount, img, color));
+    await i.reply(atskanotEmbed(chosenRadio, channel, memberCount, img, color)).catch((_) => _);
     logCommand(i);
 
     if (!connection) {
