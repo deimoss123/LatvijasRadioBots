@@ -100,10 +100,7 @@ const atskanot = {
       if (connection.state.status === VoiceConnectionStatus.Destroyed) return;
 
       isAlone = await new Promise(res => {
-        setTimeout(async () => {
-          if (!bot?.voice?.channel || bot.voice.channel.members.size <= 1) res(true);
-          res(false);
-        }, 5000);
+        setTimeout(() => res(!bot?.voice?.channel || bot.voice.channel.members.size <= 1), 5000);
       });
     }
 
