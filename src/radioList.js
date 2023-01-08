@@ -59,11 +59,11 @@ const radioList = {
     url: 'http://starfm.live.advailo.com/audio/mp3/icecast.audio',
     color: '#ffffff',
   },
-  'EHR Ziemassvētki': {
-    img: 'https://www.ulmanbots.lv/images/radio/ehr.png',
-    url: 'http://stream.europeanhitradio.com:8000/Stream_34.mp3',
-    color: '#ed1c24',
-  },
+  // 'EHR Ziemassvētki': {
+  //   img: 'https://www.ulmanbots.lv/images/radio/ehr.png',
+  //   url: 'http://stream.europeanhitradio.com:8000/Stream_34.mp3',
+  //   color: '#ed1c24',
+  // },
 };
 
 export default radioList;
