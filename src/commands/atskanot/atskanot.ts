@@ -12,11 +12,11 @@ import logCommand from '../../utils/logCommand';
 import atskanotEmbed from './atskanotEmbed';
 import logDisconnect from '../../utils/logDisconnect';
 import ephemeralEmbed from '../../utils/ephemeralEmbed';
-import { CommandInteraction } from 'discord.js';
+import { Command } from '../commandHandler';
 
-const atskanot = {
+const atskanot: Command = {
   config: atskanotConfig,
-  async run(i: CommandInteraction<'cached'>) {
+  async run(i) {
     const { channel } = i.member.voice;
 
     if (!channel) {
@@ -25,11 +25,11 @@ const atskanot = {
         .catch(_ => _);
     }
 
-    const bot = i.guild.me!;
+    const bot = i.guild.members.me!;
 
-    if (!channel.permissionsFor(bot).has('CONNECT')) {
+    if (!channel.permissionsFor(bot).has('Connect')) {
       return i
-        .reply(ephemeralEmbed('Botam nav atļauts pievienoties šim balss kanālam'))
+        .reply(ephemeralEmbed(`❌ Botam nav atļaujas pievienoties kanālam ${channel}`))
         .catch(_ => _);
     }
 
@@ -78,7 +78,7 @@ const atskanot = {
         }
       });
 
-      connection.once('destroyed', () => {
+      connection.once(VoiceConnectionStatus.Destroyed, () => {
         connection?.player.stop(true);
         connection?.removeAllListeners();
         logDisconnect(i);

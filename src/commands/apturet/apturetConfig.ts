@@ -1,7 +1,9 @@
-const apturetConfig = {
+import { ChatInputApplicationCommandData } from 'discord.js';
+
+const apturetConfig: ChatInputApplicationCommandData = {
   name: 'apturēt',
   description: 'Apturēt radio atskaņošanu',
-  dm_permission: false,
+  dmPermission: false,
 };
 
 export default apturetConfig;

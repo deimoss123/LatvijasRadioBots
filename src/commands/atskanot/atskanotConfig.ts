@@ -1,15 +1,16 @@
+import { ApplicationCommandOptionType, ChatInputApplicationCommandData } from 'discord.js';
 import radioInfo from '../../radioList';
 
-const atskanotConfig = {
+const atskanotConfig: ChatInputApplicationCommandData = {
   name: 'atskaņot',
   description: 'Atskaņot radio balss kanālā',
-  dm_permission: false,
+  dmPermission: false,
   options: [
     {
       name: 'radio',
       description: 'Izvēlēties radio staciju',
       required: true,
-      type: 'STRING',
+      type: ApplicationCommandOptionType.String,
       choices: Object.keys(radioInfo).map(radio => ({ name: `🎧 ${radio}`, value: radio })),
     },
   ],

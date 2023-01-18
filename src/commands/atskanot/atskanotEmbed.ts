@@ -1,4 +1,4 @@
-import { MessageEmbed, VoiceBasedChannel } from 'discord.js';
+import { EmbedBuilder, VoiceBasedChannel } from 'discord.js';
 import { RadioName } from '../../radioList';
 
 export default function atskanotEmbed(
@@ -10,11 +10,13 @@ export default function atskanotEmbed(
 ) {
   return {
     embeds: [
-      new MessageEmbed()
+      new EmbedBuilder()
         .setTitle('Radio atskaņošana')
         .setDescription(`Tiek atskaņots **${chosenRadio}**`)
-        .addField('Balss kanāls', `<#${channel.id}>`, true)
-        .addField('Klausītāju skaits', `${memberCount || 0}`, true)
+        .addFields(
+          { name: 'Balss kanāls', value: `${channel}`, inline: true },
+          { name: 'Klausītāju skaits', value: `${memberCount || 0}`, inline: true }
+        )
         .setThumbnail(imgUrl)
         // TODO: noņemt
         // @ts-ignore

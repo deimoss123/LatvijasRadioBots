@@ -2,15 +2,15 @@ import apturetConfig from './apturetConfig';
 import { getVoiceConnection } from '@discordjs/voice';
 import ephemeralEmbed from '../../utils/ephemeralEmbed';
 import apturetEmbed from './apturetEmbed';
-import { CommandInteraction } from 'discord.js';
+import { Command } from '../commandHandler';
 
-const apturet = {
+const apturet: Command = {
   config: apturetConfig,
-  async run(i: CommandInteraction<'cached'>) {
+  async run(i) {
     const { guildId } = i;
     const { channel } = i.member.voice;
 
-    const bot = i.guild.me!;
+    const bot = i.guild.members.me!;
     const botChannel = bot.voice.channel;
 
     const connection = getVoiceConnection(guildId);

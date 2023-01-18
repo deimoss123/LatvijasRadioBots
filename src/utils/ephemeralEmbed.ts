@@ -1,8 +1,8 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 
 export default function ephemeralEmbed(description: string) {
   return {
-    embeds: [new MessageEmbed().setDescription(description).setColor('#ffffff')],
+    embeds: [new EmbedBuilder().setDescription(description).setColor('#ffffff')],
     ephemeral: true,
   };
 }

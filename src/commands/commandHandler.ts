@@ -1,11 +1,16 @@
 import atskanot from './atskanot/atskanot';
 import apturet from './apturet/apturet';
 import ephemeralEmbed from '../utils/ephemeralEmbed';
-import { CommandInteraction } from 'discord.js';
+import { ChatInputApplicationCommandData, ChatInputCommandInteraction } from 'discord.js';
 
-export const commandList = [atskanot, apturet];
+export interface Command {
+  config: ChatInputApplicationCommandData;
+  run: (i: ChatInputCommandInteraction<'cached'>) => void;
+}
 
-export default function commandHandler(i: CommandInteraction) {
+export const commandList: Command[] = [atskanot, apturet];
+
+export default function commandHandler(i: ChatInputCommandInteraction) {
   if (!i.inCachedGuild()) {
     return i.reply(ephemeralEmbed('Latvijas Radio botu var izmantot tikai serveros')).catch(_ => _);
   }
