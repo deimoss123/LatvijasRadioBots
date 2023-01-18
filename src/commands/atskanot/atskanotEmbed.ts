@@ -1,4 +1,4 @@
-import { EmbedBuilder, VoiceBasedChannel } from 'discord.js';
+import { EmbedBuilder, HexColorString, VoiceBasedChannel } from 'discord.js';
 import { RadioName } from '../../radioList';
 
 export default function atskanotEmbed(
@@ -18,9 +18,7 @@ export default function atskanotEmbed(
           { name: 'Klausītāju skaits', value: `${memberCount || 0}`, inline: true }
         )
         .setThumbnail(imgUrl)
-        // TODO: noņemt
-        // @ts-ignore
-        .setColor(color),
+        .setColor(color as HexColorString),
     ],
   };
 }

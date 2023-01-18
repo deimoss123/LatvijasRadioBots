@@ -16,12 +16,19 @@ const apturet: Command = {
     const connection = getVoiceConnection(guildId);
 
     if (!botChannel || !connection) {
-      return i.reply(ephemeralEmbed('Pašlaik netiek atskaņots radio'));
+      return i.reply(
+        ephemeralEmbed(
+          '❌ Pašlaik netiek atskaņots radio',
+          'https://www.ulmanbots.lv/images/humors/karote.gif'
+        )
+      );
     }
 
     if (channel?.id !== botChannel.id) {
       return i
-        .reply(ephemeralEmbed('Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu'))
+        .reply(
+          ephemeralEmbed('❌ Nevar apturēt atskaņošanu, jo tu neesi vienā balss kanālā ar botu')
+        )
         .catch(_ => _);
     }
 
