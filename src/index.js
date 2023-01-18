@@ -1,11 +1,10 @@
 import { Client, Intents } from 'discord.js';
-import dotenv from 'dotenv';
 import commandHandler from './commands/commandHandler.js';
 import setBotPresence from './utils/setBotPresence.js';
 import chalk from 'chalk';
 import validateEnv from './utils/validateEnv.js';
+import 'dotenv/config';
 
-dotenv.config();
 if (!validateEnv()) process.exit(1);
 
 const client = new Client({
