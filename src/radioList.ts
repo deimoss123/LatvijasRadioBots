@@ -64,6 +64,8 @@ const radioList = {
   //   url: 'http://stream.europeanhitradio.com:8000/Stream_34.mp3',
   //   color: '#ed1c24',
   // },
-};
+} as const satisfies Record<string, { img: string; url: string; color: string }>;
+
+export type RadioName = keyof typeof radioList;
 
 export default radioList;

@@ -1,6 +1,7 @@
 import chalk from 'chalk';
+import { CommandInteraction } from 'discord.js';
 
-export default function logCommand(i) {
+export default function logCommand(i: CommandInteraction<'cached'>) {
   console.log(
     [
       new Date().toLocaleString('en-GB'),

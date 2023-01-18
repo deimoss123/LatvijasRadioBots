@@ -1,8 +1,8 @@
 import { Client, Intents } from 'discord.js';
-import commandHandler from './commands/commandHandler.js';
-import setBotPresence from './utils/setBotPresence.js';
+import commandHandler from './commands/commandHandler';
+import setBotPresence from './utils/setBotPresence';
 import chalk from 'chalk';
-import validateEnv from './utils/validateEnv.js';
+import validateEnv from './utils/validateEnv';
 import 'dotenv/config';
 
 if (!validateEnv()) process.exit(1);

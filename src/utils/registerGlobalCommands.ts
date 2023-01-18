@@ -1,9 +1,9 @@
-import { commandList } from '../commands/commandHandler.js';
+import { commandList } from '../commands/commandHandler';
 import dotenv from 'dotenv';
-import validateEnv from './validateEnv.js';
+import validateEnv from './validateEnv';
 import { Client, Intents } from 'discord.js';
 
-async function registerGuildCommands(client) {
+async function registerGuildCommands(client: Client<true>) {
   await client.application.commands.set([...commandList].map(cmd => cmd.config)).then(() => {
     console.log('Global commands registered!');
     process.exit(0);

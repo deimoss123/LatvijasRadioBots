@@ -1,10 +1,10 @@
-import { commandList } from '../commands/commandHandler.js';
+import { commandList } from '../commands/commandHandler';
 import dotenv from 'dotenv';
-import validateEnv from './validateEnv.js';
+import validateEnv from './validateEnv';
 import { Client, Intents } from 'discord.js';
 
-async function registerGuildCommands(client) {
-  const guild = await client.guilds.fetch(process.env.DEV_GUILD_ID);
+async function registerGuildCommands(client: Client<true>) {
+  const guild = await client.guilds.fetch(process.env.DEV_GUILD_ID!);
 
   await guild.commands.set([...commandList].map(cmd => cmd.config)).then(() => {
     console.log('Guild commands registered!');

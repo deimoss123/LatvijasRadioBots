@@ -15,5 +15,8 @@
     "no-empty": "warn",
     "func-names": "error",
     "@typescript-eslint/ban-ts-comment": "off"
+  },
+  "env": {
+    "node": true
   }
 }

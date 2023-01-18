@@ -1,4 +1,4 @@
-import radioInfo from '../../radioList.js';
+import radioInfo, { RadioName } from '../../radioList';
 import {
   createAudioPlayer,
   createAudioResource,
@@ -7,16 +7,17 @@ import {
   joinVoiceChannel,
   VoiceConnectionStatus,
 } from '@discordjs/voice';
-import atskanotConfig from './atskanotConfig.js';
-import logCommand from '../../utils/logCommand.js';
-import atskanotEmbed from './atskanotEmbed.js';
-import logDisconnect from '../../utils/logDisconnect.js';
-import ephemeralEmbed from '../../utils/ephemeralEmbed.js';
+import atskanotConfig from './atskanotConfig';
+import logCommand from '../../utils/logCommand';
+import atskanotEmbed from './atskanotEmbed';
+import logDisconnect from '../../utils/logDisconnect';
+import ephemeralEmbed from '../../utils/ephemeralEmbed';
+import { CommandInteraction } from 'discord.js';
 
 const atskanot = {
   config: atskanotConfig,
-  async run(i) {
-    const { channel } = i.member?.voice;
+  async run(i: CommandInteraction<'cached'>) {
+    const { channel } = i.member.voice;
 
     if (!channel) {
       return i
@@ -24,7 +25,7 @@ const atskanot = {
         .catch(_ => _);
     }
 
-    const bot = i.guild.me;
+    const bot = i.guild.me!;
 
     if (!channel.permissionsFor(bot).has('CONNECT')) {
       return i
@@ -32,7 +33,7 @@ const atskanot = {
         .catch(_ => _);
     }
 
-    const chosenRadio = i.options.getString('radio');
+    const chosenRadio = i.options.getString('radio') as RadioName;
     const { img, url, color } = radioInfo[chosenRadio];
 
     let currentConnection = getVoiceConnection(i.guildId);
@@ -52,7 +53,7 @@ const atskanot = {
     let memberCount = channel.members.size;
     if (bot.voice.channel && bot.voice.channelId === channel.id) memberCount--;
 
-    await i.reply(atskanotEmbed(chosenRadio, channel, memberCount, img, color)).catch(_ => _);
+    i.reply(atskanotEmbed(chosenRadio, channel, memberCount, img, color)).catch(_ => _);
     logCommand(i);
 
     if (!connection) {
@@ -63,22 +64,23 @@ const atskanot = {
       });
 
       // ja bots zaudē savienojumu tad mēģinās atsākt atskaņošanu
-      connection.on('disconnected', async () => {
+      connection.on(VoiceConnectionStatus.Disconnected, async () => {
         try {
           await Promise.race([
-            entersState(connection, VoiceConnectionStatus.Signalling, 5_000),
-            entersState(connection, VoiceConnectionStatus.Connecting, 5_000),
+            entersState(connection!, VoiceConnectionStatus.Signalling, 5_000),
+            entersState(connection!, VoiceConnectionStatus.Connecting, 5_000),
           ]);
         } catch (e) {
           try {
-            connection.destroy();
+            connection?.destroy();
+            // eslint-disable-next-line no-empty
           } catch (e) {}
         }
       });
 
       connection.once('destroyed', () => {
-        connection.player.stop(true);
-        connection.removeAllListeners();
+        connection?.player.stop(true);
+        connection?.removeAllListeners();
         logDisconnect(i);
       });
 
@@ -106,6 +108,7 @@ const atskanot = {
 
     try {
       connection.destroy();
+      // eslint-disable-next-line no-empty
     } catch (e) {}
   },
 };
