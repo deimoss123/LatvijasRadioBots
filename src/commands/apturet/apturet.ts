@@ -16,12 +16,14 @@ const apturet: Command = {
     const connection = getVoiceConnection(guildId);
 
     if (!botChannel || !connection) {
-      return i.reply(
-        ephemeralEmbed(
-          '❌ Pašlaik netiek atskaņots radio',
-          'https://www.ulmanbots.lv/images/humors/karote.gif'
+      return i
+        .reply(
+          ephemeralEmbed(
+            '❌ Pašlaik netiek atskaņots radio',
+            'https://www.ulmanbots.lv/images/humors/karote.gif'
+          )
         )
-      );
+        .catch(_ => _);
     }
 
     if (channel?.id !== botChannel.id) {
