@@ -21,8 +21,13 @@ const radioList = {
   },
   'Latvijas Radio 5': {
     img: 'https://www.ulmanbots.lv/images/radio/lr5.png',
-    url: 'https://live.pieci.lv/live19-hq.mp3',
+    url: 'https://5a44e5b800a41.streamlock.net/pieci/mp4:k2/chunklist_w379784304.m3u8',
     color: '#9464fa',
+  },
+  'LR Vecās Plates': {
+    img: 'https://live.latvijasradio.lv/_next/image?url=https%3A%2F%2Fcdn.pieci.lv%2Fmedia%2Fbranding%2F640%2Fvecas-plates_l.jpg&w=640&q=75',
+    url: 'https://5a44e5b800a41.streamlock.net/pieci/mp4:k4/chunklist_w1071824452.m3u8',
+    color: '#dfcead',
   },
   'Radio SWH': {
     img: 'https://www.ulmanbots.lv/images/radio/swh.jpg',
