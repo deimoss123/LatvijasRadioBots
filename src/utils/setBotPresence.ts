@@ -5,6 +5,13 @@ export default function setBotPresence(client: Client<true>) {
 
   client.user.setPresence({
     status: PresenceUpdateStatus.DoNotDisturb,
-    activities: [{ name: `/atskaņot | ${guildCount} serveros`, type: ActivityType.Playing }],
+    activities: [
+      {
+        state: `/atskaņot | ${guildCount} serveros`,
+        // @ts-ignore
+        type: ActivityType.Custom,
+        name: '-',
+      },
+    ],
   });
 }
