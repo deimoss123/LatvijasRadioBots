@@ -5,8 +5,6 @@ import {
   entersState,
   getVoiceConnection,
   joinVoiceChannel,
-  NoSubscriberBehavior,
-  StreamType,
   VoiceConnectionStatus,
 } from '@discordjs/voice';
 import atskanotConfig from './atskanotConfig';
@@ -93,35 +91,14 @@ const atskanot: Command = {
       });
 
       // neliela šizofrēnija
-      connection.player = createAudioPlayer({
-        behaviors: { maxMissedFrames: 30, noSubscriber: NoSubscriberBehavior.Play },
-      });
+      connection.player = createAudioPlayer();
     }
-
-    const audioResource = createAudioResource(url);
-
-    connection.player.on('stateChange', (oldState, newState) => {
-      // console.log(oldState.status, newState.status);
-      // console.log(newState);
-    });
-
-    connection.player.on('error', error => {
-      console.log('err');
-      console.log(error);
-    });
-
-    connection.player.on('debug', console.log);
 
     connection.subscribe(connection.player);
 
+    const audioResource = createAudioResource(url);
     connection.player.play(audioResource);
     connection.player.radioUrl = chosenRadio;
-
-    // console.log(audioResource);
-
-    // setInterval(() => {
-    //   console.log(connection?.player);
-    // }, 1000);
 
     connection.setSpeaking(true);
 
