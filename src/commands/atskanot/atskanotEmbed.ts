@@ -1,6 +1,8 @@
 import { EmbedBuilder, HexColorString, VoiceBasedChannel } from 'discord.js';
 import { RadioName } from '../../radioList';
 
+const PIESPRAUDE_EMOJI = '<:piespraude:1172581024430043187>';
+
 export default function atskanotEmbed(
   chosenRadio: RadioName,
   channel: VoiceBasedChannel,
@@ -11,8 +13,11 @@ export default function atskanotEmbed(
   return {
     embeds: [
       new EmbedBuilder()
-        .setTitle('Radio atskaņošana')
-        .setDescription(`Tiek atskaņots **${chosenRadio}**`)
+        .setTitle(`Radio atskaņošana`)
+        .setDescription(
+          (process.env.PIESPRAUDE ? `${PIESPRAUDE_EMOJI} ` : '') +
+            `Tiek atskaņots **${chosenRadio}**`
+        )
         .addFields(
           { name: 'Balss kanāls', value: `${channel}`, inline: true },
           { name: 'Klausītāju skaits', value: `${memberCount || 0}`, inline: true }
