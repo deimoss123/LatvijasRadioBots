@@ -5,6 +5,8 @@ import {
   entersState,
   getVoiceConnection,
   joinVoiceChannel,
+  NoSubscriberBehavior,
+  StreamType,
   VoiceConnectionStatus,
 } from '@discordjs/voice';
 import atskanotConfig from './atskanotConfig';
@@ -21,7 +23,7 @@ const atskanot: Command = {
 
     if (!channel) {
       return i
-        .reply(ephemeralEmbed('Pievienojies balss kanālam lai atskaņotu radio'))
+        .reply(ephemeralEmbed('❌ Pievienojies balss kanālam lai atskaņotu radio'))
         .catch(_ => _);
     }
 
@@ -34,6 +36,12 @@ const atskanot: Command = {
     }
 
     const chosenRadio = i.options.getString('radio') as RadioName;
+    if (!chosenRadio || !radioInfo[chosenRadio]) {
+      return i
+        .reply(ephemeralEmbed('❌ Šis radio neeksistē, lūdzu, izvēlies kādu radio no saraksta'))
+        .catch(_ => _);
+    }
+
     const { img, url, color } = radioInfo[chosenRadio];
 
     let currentConnection = getVoiceConnection(i.guildId);
@@ -46,7 +54,7 @@ const atskanot: Command = {
 
     if (connection?.player?.radioUrl === chosenRadio) {
       return i
-        .reply(ephemeralEmbed(`Balss kanālā jau tiek atskaņots **${chosenRadio}**`))
+        .reply(ephemeralEmbed(`❌ Balss kanālā jau tiek atskaņots **${chosenRadio}**`))
         .catch(_ => _);
     }
 
@@ -85,13 +93,36 @@ const atskanot: Command = {
       });
 
       // neliela šizofrēnija
-      connection.player = createAudioPlayer();
+      connection.player = createAudioPlayer({
+        behaviors: { maxMissedFrames: 30, noSubscriber: NoSubscriberBehavior.Play },
+      });
     }
 
-    connection.player.play(createAudioResource(url));
-    connection.player.radioUrl = chosenRadio;
+    const audioResource = createAudioResource(url);
+
+    connection.player.on('stateChange', (oldState, newState) => {
+      // console.log(oldState.status, newState.status);
+      // console.log(newState);
+    });
+
+    connection.player.on('error', error => {
+      console.log('err');
+      console.log(error);
+    });
+
+    connection.player.on('debug', console.log);
 
     connection.subscribe(connection.player);
+
+    connection.player.play(audioResource);
+    connection.player.radioUrl = chosenRadio;
+
+    // console.log(audioResource);
+
+    // setInterval(() => {
+    //   console.log(connection?.player);
+    // }, 1000);
+
     connection.setSpeaking(true);
 
     if (currentConnection) return;
