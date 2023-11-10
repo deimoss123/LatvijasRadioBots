@@ -1,7 +1,9 @@
 const radioList = {
   'Latvijas Radio 1': {
     img: 'https://www.ulmanbots.lv/images/radio/lr1.png',
-    url: 'https://60766ff53d5e6.streamlock.net/liveALR1/mp4:LR1/playlist.m3u8',
+    // url: 'https://60766ff53d5e6.streamlock.net/liveALR1/mp4:LR1/playlist.m3u8',
+    // url: 'http://lr1mp1.latvijasradio.lv:8012/listen.pls',
+    url: 'http://lr1mp1.latvijasradio.lv:8012/;stream.mp3',
     color: '#e00008',
   },
   'Latvijas Radio 2': {
