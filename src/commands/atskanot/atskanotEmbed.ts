@@ -15,7 +15,7 @@ export default function atskanotEmbed(
       new EmbedBuilder()
         .setTitle(`Radio atskaņošana`)
         .setDescription(
-          (process.env.PIESPRAUDE ? `${PIESPRAUDE_EMOJI} ` : '') +
+          (process.env.PIESPRAUDE === 'true' ? `${PIESPRAUDE_EMOJI} ` : '') +
             `Tiek atskaņots **${chosenRadio}**`
         )
         .addFields(
