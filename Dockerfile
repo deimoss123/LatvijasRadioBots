@@ -1,20 +1,15 @@
-ARG DEV_GUILD_ID
-ARG TOKEN
-ARG FORCE_COLOR
+FROM node:20-alpine
 
-FROM node
+RUN apk add g++ make py3-pip ffmpeg
+
+RUN npm i -g pnpm
 
 WORKDIR /usr/app
 
-COPY package*.json ./
-
-RUN npm ci
+COPY package.json ./
+COPY pnpm-lock.yaml ./
+RUN pnpm install
 
 COPY . .
 
-RUN npm run build
-
-EXPOSE 443/tcp
-EXPOSE 50000-65535/udp 
-
-CMD [ "node", "dist/index.js" ]
+RUN pnpm run build

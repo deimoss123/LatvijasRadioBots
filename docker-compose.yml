@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  bot:
+    container_name: lr-bots
+    restart: always
+    build: .
+    command: pnpm start
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+      - /usr/app/dist
+    env_file:
+      - .env
