@@ -2,7 +2,7 @@
 
 Discord bots, kas spēj atskaņot latviešu radio stacijas balss kanālos.
 
-### Bota uzaicinājums uz serveri atrodams [šeit](https://discord.com/api/oauth2/authorize?client_id=1006231500229976154&permissions=3145728&scope=applications.commands%20bot).
+**Bota uzaicinājums uz serveri atrodams [šeit](https://discord.com/api/oauth2/authorize?client_id=1006231500229976154&permissions=3145728&scope=applications.commands%20bot).**
 
 Pašreizējais staciju saraksts - Latvijas Radio 1-5, SWH, Skonto, Lotgolys Radeja, Latvijas Kristīgais Radio, Kurzemes Radio, EHR, Star FM.
 
@@ -43,7 +43,11 @@ Izveido `.env` failu šajā pašā mapē ņemot [.env.example](./.env.example) f
 
 ## 3.
 
-Palaižam komandu `docker-compose up -d`, kas izveidos Docker image, uzbūvēs un palaidīs botu.
+Palaižam sekojošo komandu, kas izveidos Docker image, uzbūvēs un palaidīs botu.
+
+```sh
+docker-compose up -d
+```
 
 ## 4.
 
@@ -86,7 +90,11 @@ Palaižam sekojošo komandu, lai atvērtu interaktīvu čaulu iekš konteinera.
 docker exec -it lr-bots sh
 ```
 
-`lr-bots` vietā var gadīties arī cits nosaukums. Visus ejošos Docker procesus sistēmā var redzēt ar komandu `docker ps`.
+`lr-bots` vietā var gadīties arī cits nosaukums. Visus ejošos Docker procesus sistēmā var redzēt ar šo komandu
+
+```
+docker ps
+```
 
 ## 6.
 
@@ -106,7 +114,7 @@ pnpm register:global
 
 No konteinera var tik laukā ar komandu `exit`.
 
-### Ja komandas neparādās uzreiz, uzgaidi, ja pēc minūtes nav, tad restartē Discordu (ctrl + r).
+**Ja komandas neparādās uzreiz, uzgaidi, ja pēc minūtes nav, tad restartē Discordu (ctrl + r).**
 
 ## 7.
 
