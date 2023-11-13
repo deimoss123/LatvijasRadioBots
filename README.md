@@ -39,15 +39,13 @@ Ieinstalē Docker, kā arī docker-compose, ja tas nenāk komplektā. Atrodi kā
 
 Izveido `.env` failu šajā pašā mapē ņemot [.env.example](./.env.example) failu kā piemēru.
 
-## 3.
-
 `.env` failā ievadi nepieciešamās vērtības. Šeit būs nepieciešams iepriekš minētais tokens.
 
+## 3.
+
+Palaižam komandu `docker-compose up -d`, kas izveidos Docker image, uzbūvēs un palaidīs botu.
+
 ## 4.
-
-Palaižam komandu `docker-compose up -d`, kas izveidot Docker image, uzbūvēs un palaidīs botu.
-
-## 5.
 
 Ja iepriekšējā solī nav parādījušās kļūdas, tad varam apskatīties `docker-compose logs`. Viss ir bumbās, ja redzams šāds teksts un nav kļūdu.
 
@@ -80,7 +78,7 @@ lr-bots  | --------------------------------------------------
 
 Viss ir forši un fantastiski, bet mums ir problēma - kā klausīties radio? Botam ir nepieciešams reģistrēt komandas, lai tās lietotājiem parādītos Discordā.
 
-## 6.
+## 5.
 
 Palaižam sekojošo komandu, lai atvērtu interaktīvu čaulu iekš konteinera.
 
@@ -90,7 +88,7 @@ docker exec -it lr-bots sh
 
 `lr-bots` vietā var gadīties arī cits nosaukums. Visus ejošos Docker procesus sistēmā var redzēt ar komandu `docker ps`.
 
-## 7.
+## 6.
 
 Tagad jāievada viena (vai abas) no sekojošām komandām, kas Discordam jauki palūgs reģistrēt bota komandas (`/atskaņot` un `/apturet`).
 
@@ -110,10 +108,10 @@ No konteinera var tik laukā ar komandu `exit`.
 
 ### Ja komandas neparādās uzreiz, uzgaidi, ja pēc minūtes nav, tad restartē Discordu (ctrl + r).
 
-## 8.
+## 7.
 
 Ieej balss kanālā, palaid komandu `/atskaņot` un nosvini šo atgadījumu. Es jau no paša sākuma ticēju, ka tev tas izdosies. Labi padarīts! 🎉
 
-## 9. Papildus punkts par Docker
+## 8. Papildus punkts par Docker
 
 Konteineris strādās tik ilgi kamēr pats Docker būs ieslēgts. Konteineris automātiski restartēsies pie kļūdām/lūzumiem, tā kā par to nav jāuztraucas. Botu var apstādināt ar komandu `docker-compose down`, atrodoties šajā pašā mapē, vai arī ar `docker stop lr-bots`.
