@@ -33,7 +33,7 @@ Bota palaišanai ir 2 opcijas - Docker konteinerī, vai arī bez. Ja neplāno ve
 
 ## 1.
 
-Ieinstalē Docker, kā arī docker-compose, ja tas nenāk komplektā. Atrodi kādu pamācību internetā kā to izdarīt, šī nav Docker pamācība.
+Ieinstalē Docker, kā arī docker-compose, ja tas nenāk komplektā. Internetā var atrast ļoti foršas pamācības kā to izdarīt.
 
 ## 2.
 
@@ -84,42 +84,26 @@ Viss ir forši un fantastiski, bet mums ir problēma - kā klausīties radio? Bo
 
 ## 5.
 
-Palaižam sekojošo komandu, lai atvērtu interaktīvu čaulu iekš konteinera.
-
-```sh
-docker exec -it lr-bots sh
-```
-
-`lr-bots` vietā var gadīties arī cits nosaukums. Visus ejošos Docker procesus sistēmā var redzēt ar šo komandu
-
-```
-docker ps
-```
-
-## 6.
-
 Tagad jāievada viena (vai abas) no sekojošām komandām, kas Discordam jauki palūgs reģistrēt bota komandas (`/atskaņot` un `/apturet`).
 
 Lai reģistrētu komandas tikai vienā serverī, kas norādīts tavā `.env` failā.
 
 ```sh
-pnpm register
+docker exec -it lr-bots pnpm register
 ```
 
 Lai reģistrētu komandas globāli, visos serveros.
 
 ```sh
-pnpm register:global
+docker exec -it lr-bots pnpm register:global
 ```
-
-No konteinera var tik laukā ar komandu `exit`.
 
 **Ja komandas neparādās uzreiz, uzgaidi, ja pēc minūtes nav, tad restartē Discordu (ctrl + r).**
 
-## 7.
+## 6.
 
 Ieej balss kanālā, palaid komandu `/atskaņot` un nosvini šo atgadījumu. Es jau no paša sākuma ticēju, ka tev tas izdosies. Labi padarīts! 🎉
 
-## 8. Papildus punkts par Docker
+## 7. Papildus punkts par Docker
 
 Konteineris strādās tik ilgi kamēr pats Docker būs ieslēgts. Konteineris automātiski restartēsies pie kļūdām/lūzumiem, tā kā par to nav jāuztraucas. Botu var apstādināt ar komandu `docker-compose down`, atrodoties šajā pašā mapē, vai arī ar `docker stop lr-bots`.
