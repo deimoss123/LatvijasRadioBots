@@ -26,6 +26,11 @@ const radioList = {
     url: 'https://5a44e5b800a41.streamlock.net/pieci/mp4:k2/chunklist_w379784304.m3u8',
     color: '#9464fa',
   },
+  'EHR Ziemassvētki': {
+    img: 'https://www.ulmanbots.lv/images/radio/ehr.png',
+    url: 'http://stream.europeanhitradio.com:8000/Stream_34.mp3',
+    color: '#ed1c24',
+  },
   'LR Vecās Plates': {
     img: 'https://live.latvijasradio.lv/_next/image?url=https%3A%2F%2Fcdn.pieci.lv%2Fmedia%2Fbranding%2F640%2Fvecas-plates_l.jpg&w=640&q=75',
     url: 'https://5a44e5b800a41.streamlock.net/pieci/mp4:k4/chunklist_w1071824452.m3u8',
@@ -46,11 +51,11 @@ const radioList = {
     url: 'http://195.13.253.51:8000/128_mp3',
     color: '#155f0a',
   },
-  'Latvijas Kristigais Radio': {
-    img: 'https://www.ulmanbots.lv/images/radio/kristigais.jpg',
-    url: 'http://91.228.7.124:7007/;?type=http&nocache=905',
-    color: '#643c78',
-  },
+  // 'Latvijas Kristigais Radio': {
+  //   img: 'https://www.ulmanbots.lv/images/radio/kristigais.jpg',
+  //   url: 'http://91.228.7.124:7007/;?type=http&nocache=905',
+  //   color: '#643c78',
+  // },
   'Kurzemes Radio': {
     img: 'https://www.ulmanbots.lv/images/radio/kurzemes.png',
     url: 'http://31.170.16.6:8000/;?type=http&nocache=457',
@@ -66,11 +71,6 @@ const radioList = {
     url: 'http://starfm.live.advailo.com/audio/mp3/icecast.audio',
     color: '#ffffff',
   },
-  // 'EHR Ziemassvētki': {
-  //   img: 'https://www.ulmanbots.lv/images/radio/ehr.png',
-  //   url: 'http://stream.europeanhitradio.com:8000/Stream_34.mp3',
-  //   color: '#ed1c24',
-  // },
 } as const satisfies Record<string, { img: string; url: string; color: string }>;
 
 export type RadioName = keyof typeof radioList;
