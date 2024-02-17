@@ -41,6 +41,11 @@ const radioList = {
     url: 'https://live.radioswh.lv:8443/swhmp3',
     color: '#f67f21',
   },
+  'Radio SWH Rock': {
+    img: 'https://i.postimg.cc/nzQX2Jyc/sw-h-rock.png',
+    url: 'https://live.radioswh.lv:8443/rockmp3',
+    color: '#c93440',
+  },
   'Radio Skonto': {
     img: 'https://www.ulmanbots.lv/images/radio/skonto.jpg',
     url: 'http://stream.radioskonto.lv:8002/stereo',
