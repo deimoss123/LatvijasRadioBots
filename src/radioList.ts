@@ -26,11 +26,11 @@ const radioList = {
     url: 'https://5a44e5b800a41.streamlock.net/pieci/mp4:k2/chunklist_w379784304.m3u8',
     color: '#9464fa',
   },
-  'EHR Ziemassvētki': {
-    img: 'https://www.ulmanbots.lv/images/radio/ehr.png',
-    url: 'http://stream.europeanhitradio.com:8000/Stream_34.mp3',
-    color: '#ed1c24',
-  },
+  // 'EHR Ziemassvētki': {
+  //   img: 'https://www.ulmanbots.lv/images/radio/ehr.png',
+  //   url: 'http://stream.europeanhitradio.com:8000/Stream_34.mp3',
+  //   color: '#ed1c24',
+  // },
   'LR Vecās Plates': {
     img: 'https://live.latvijasradio.lv/_next/image?url=https%3A%2F%2Fcdn.pieci.lv%2Fmedia%2Fbranding%2F640%2Fvecas-plates_l.jpg&w=640&q=75',
     url: 'https://5a44e5b800a41.streamlock.net/pieci/mp4:k4/chunklist_w1071824452.m3u8',
