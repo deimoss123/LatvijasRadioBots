@@ -4,6 +4,7 @@ Discord bots, kas spēj atskaņot latviešu radio stacijas balss kanālos.
 
 **Bota uzaicinājums uz serveri atrodams [šeit](https://discord.com/api/oauth2/authorize?client_id=1006231500229976154&permissions=3145728&scope=applications.commands%20bot).**
 
+<!--
 ### Pieejamo radio staciju saraksts
 
 ![](/assets/16x16/lr1.png) Latvijas Radio 1 <br>
@@ -19,6 +20,7 @@ Discord bots, kas spēj atskaņot latviešu radio stacijas balss kanālos.
 ![](/assets/16x16/kurzemes.png) Kurzemes Radio <br>
 ![](/assets/16x16/ehr.png) European Hit Radio <br>
 ![](/assets/16x16/starfm.png) Star FM <br>
+-->
 
 ### Pieejamo radio staciju saraksts
 
