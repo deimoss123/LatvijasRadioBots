@@ -1,4 +1,4 @@
-# ![](./assets/24x24/lr1.png) Latvijas Radio Discord Bots
+# ![](/assets/logo24.png) Latvijas Radio Discord Bots
 
 Discord bots, kas spēj atskaņot latviešu radio stacijas balss kanālos.
 
