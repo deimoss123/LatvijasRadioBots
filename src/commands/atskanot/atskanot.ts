@@ -56,11 +56,11 @@ const atskanot: Command = {
 
     let connection = currentConnection;
 
-    if (connection?.player?.radioUrl === chosenRadio) {
-      return i
-        .reply(ephemeralEmbed(`❌ Balss kanālā jau tiek atskaņots **${chosenRadio}**`))
-        .catch(_ => _);
-    }
+    // if (connection?.player?.radioUrl === chosenRadio) {
+    //   return i
+    //     .reply(ephemeralEmbed(`❌ Balss kanālā jau tiek atskaņots **${chosenRadio}**`))
+    //     .catch(_ => _);
+    // }
 
     let memberCount = channel.members.size;
     if (bot.voice.channel && bot.voice.channelId === channel.id) memberCount--;
