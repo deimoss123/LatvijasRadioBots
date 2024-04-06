@@ -27,7 +27,13 @@ const atskanot: Command = {
 
     const bot = i.guild.members.me!;
 
-    if (!channel.permissionsFor(bot).has('Connect')) {
+    if (!channel.viewable) {
+      return i
+        .reply(ephemeralEmbed(`❌ Bots neredz kanālu ${channel}, tāpēc tam nevar pievienoties`))
+        .catch(_ => _);
+    }
+
+    if (!channel.joinable) {
       return i
         .reply(ephemeralEmbed(`❌ Botam nav atļaujas pievienoties kanālam ${channel}`))
         .catch(_ => _);
