@@ -1,0 +1,10 @@
+services:
+  bot:
+    container_name: lr-bots
+    restart: always
+    build: 
+      context: .
+      dockerfile: ./dev.Dockerfile
+    command: pnpm dev
+    volumes:
+      - .:/usr/app/

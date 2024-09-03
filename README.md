@@ -72,12 +72,12 @@ Izveido `.env` failu šajā pašā mapē ņemot [.env.example](./.env.example) f
 Palaižam sekojošo komandu, kas izveidos Docker image, uzbūvēs un palaidīs botu.
 
 ```sh
-docker-compose up -d
+docker compose -f docker-compose.prod.yml up
 ```
 
 ## 4.
 
-Ja iepriekšējā solī nav parādījušās kļūdas, tad varam apskatīties `docker-compose logs`. Viss ir bumbās, ja redzams šāds teksts un nav kļūdu.
+Ja iepriekšējā solī nav parādījušās kļūdas, tad varam apskatīties `docker compose logs`. Viss ir bumbās, ja redzams šāds teksts un nav kļūdu.
 
 ```
 lr-bots  |
@@ -132,4 +132,4 @@ Ieej balss kanālā, palaid komandu `/atskaņot` un nosvini šo atgadījumu. Es 
 
 ## 7. Papildus punkts par Docker
 
-Konteineris strādās tik ilgi kamēr pats Docker būs ieslēgts. Konteineris automātiski restartēsies pie kļūdām/lūzumiem, tā kā par to nav jāuztraucas. Botu var apstādināt ar komandu `docker-compose down`, atrodoties šajā pašā mapē, vai arī ar `docker stop lr-bots`.
+Konteineris strādās tik ilgi kamēr pats Docker būs ieslēgts. Konteineris automātiski restartēsies pie kļūdām/lūzumiem, tā kā par to nav jāuztraucas. Botu var apstādināt ar komandu `docker compose down`, atrodoties šajā pašā mapē, vai arī ar `docker stop lr-bots`.
