@@ -16,4 +16,5 @@ async function registerGuildCommands(client: Client<true>) {
 if (!validateEnv()) process.exit(1);
 
 const client = new Client({ intents: [] });
-client.login(process.env.TOKEN).then(() => registerGuildCommands(client));
+client.once('ready', bot => registerGuildCommands(bot));
+client.login(process.env.TOKEN);
