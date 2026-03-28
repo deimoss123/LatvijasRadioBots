@@ -10,7 +10,6 @@ Discord bots, kas spēj atskaņot latviešu radio stacijas balss kanālos.
 ![](/assets/16x16/lr1.png) Latvijas Radio 1 <br>
 ![](/assets/16x16/lr2.png) Latvijas Radio 2 <br>
 ![](/assets/16x16/lr3.png) Latvijas Radio 3 <br>
-![](/assets/16x16/lr4.png) Latvijas Radio 4 <br>
 ![](/assets/16x16/lr5.png) Latvijas Radio 5 <br>
 ![](/assets/16x16/lr-vecas-plates.jpg) LR Vecās Plates <br>
 ![](/assets/16x16/swh.jpg) Radio SWH <br>
@@ -24,15 +23,14 @@ Discord bots, kas spēj atskaņot latviešu radio stacijas balss kanālos.
 
 ### Pieejamo radio staciju saraksts
 
-|                                                |                                                        |
-| ---------------------------------------------- | ------------------------------------------------------ |
-| ![](/assets/16x16/lr1.png) Latvijas Radio 1    | ![](/assets/16x16/lr2.png) Latvijas Radio 2            |
-| ![](/assets/16x16/lr3.png) Latvijas Radio 3    | ![](/assets/16x16/lr4.png) Latvijas Radio 4            |
-| ![](/assets/16x16/lr5.png) Latvijas Radio 5    | ![](/assets/16x16/lr-vecas-plates.jpg) LR Vecās Plates |
-| ![](/assets/16x16/swh.jpg) Radio SWH           | ![](/assets/16x16/swh-rock.png) Radio SWH Rock         |
-| ![](/assets/16x16/skonto.jpg) Radio Skonto     | ![](/assets/16x16/latgales.png) Latgolys Radeja        |
-| ![](/assets/16x16/kurzemes.png) Kurzemes Radio | ![](/assets/16x16/ehr.png) European Hit Radio          |
-| ![](/assets/16x16/starfm.png) Star FM          |                                                        |
+|                                                        |                                                |
+| ------------------------------------------------------ | ---------------------------------------------- |
+| ![](/assets/16x16/lr1.png) Latvijas Radio 1            | ![](/assets/16x16/lr2.png) Latvijas Radio 2    |
+| ![](/assets/16x16/lr3.png) Latvijas Radio 3            | ![](/assets/16x16/lr5.png) Latvijas Radio 5    |
+| ![](/assets/16x16/lr-vecas-plates.jpg) LR Vecās Plates | ![](/assets/16x16/swh.jpg) Radio SWH           |
+| ![](/assets/16x16/swh-rock.png) Radio SWH Rock         | ![](/assets/16x16/skonto.jpg) Radio Skonto     |
+| ![](/assets/16x16/latgales.png) Latgolys Radeja        | ![](/assets/16x16/kurzemes.png) Kurzemes Radio |
+| ![](/assets/16x16/ehr.png) European Hit Radio          | ![](/assets/16x16/starfm.png) Star FM          |
 
 # Kā palaist botu lokāli
 

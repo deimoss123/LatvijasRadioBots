@@ -14,11 +14,11 @@ const radioList = {
     url: 'https://60766ff53d5e6.streamlock.net/liveALR3/mp4:klasika/playlist.m3u8',
     color: '#000000',
   },
-  'Latvijas Radio 4': {
-    img: 'https://raw.githubusercontent.com/deimoss123/LatvijasRadioBots/dev/assets/full/lr4.png',
-    url: 'https://5a44e5b800a41.streamlock.net/shoutcast/mp4:lr4a.stream/playlist.m3u8',
-    color: '#307fe2',
-  },
+  // 'Latvijas Radio 4': {
+  //   img: 'https://raw.githubusercontent.com/deimoss123/LatvijasRadioBots/dev/assets/full/lr4.png',
+  //   url: 'https://5a44e5b800a41.streamlock.net/shoutcast/mp4:lr4a.stream/playlist.m3u8',
+  //   color: '#307fe2',
+  // },
   'Latvijas Radio 5': {
     img: 'https://raw.githubusercontent.com/deimoss123/LatvijasRadioBots/dev/assets/full/lr5.png',
     url: 'https://5a44e5b800a41.streamlock.net/pieci/mp4:k2/chunklist_w379784304.m3u8',
@@ -31,7 +31,7 @@ const radioList = {
   // },
   'LR Vecās Plates': {
     img: 'https://raw.githubusercontent.com/deimoss123/LatvijasRadioBots/dev/assets/full/lr-vecas-plates.jpg',
-    url: 'https://5a44e5b800a41.streamlock.net/pieci/mp4:k4/chunklist_w1071824452.m3u8',
+    url: 'https://w1.130db.lv/pieci/smil:k4.smil/chunklist_w410747466_b128000_ao.m3u8?_HLS_skip=YES',
     color: '#dfcead',
   },
   'Radio SWH': {
